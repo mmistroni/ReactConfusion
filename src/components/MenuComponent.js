@@ -10,25 +10,31 @@ class Menu extends Component {
         this.state = {
             selectedDish : null
         }
+        this.onDishSelect = this.onDishSelect.bind(this);
+        
     }
     
     onDishSelect(dish) {
+        console.log('MenuComponent.OnDishSelect was triggered for:' + dish.name);
         this.setState({
             selectedDish:dish
         });
+        
     }
     
     renderDish(dish) {
             if(dish != null) {
                 return(
-                    <Card>
-                        <CardImg width="100%" src={dish.image} alt={dish.name}/>
-                        <CardBody>
-                            <CardTitle>{dish.name}</CardTitle>
-                            <CardText>{dish.description}</CardText>
-                        </CardBody>
-                    </Card>
-                
+                    <div key={dish.id} className="col-12 col-md-5 m-1">
+                        <Card>
+                            <CardImg width="50%" src={dish.image} alt={dish.name}/>
+                            <CardBody>
+                                <CardTitle>{dish.name}</CardTitle>
+                                <CardText>{dish.description}</CardText>
+                            </CardBody>
+                        </Card>
+                    </div>
+                        
                 );
             } else {
                 return (
@@ -43,13 +49,9 @@ class Menu extends Component {
         
         const menu = this.props.dishes.map((dish) => {
             return (
-                <DishDetail dish={dish}/>
-                
-                
-                
+                <DishDetail dish={dish} action={this.onDishSelect}/>
             );
         });
-        
         
         return ( 
             <div className="container">

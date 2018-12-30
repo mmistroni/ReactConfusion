@@ -4,27 +4,53 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reac
 class DishDetail extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedDish : null    
-        };
     }
     
-    render() {
-        
-        return (
-                <div key={this.props.dish.id} className="col-12 col-md-5 m-1">
-                    <Card>
+    
+    renderStandard() {
+            return (
+                    <div key={this.props.dish.id} className="col-12 col-md-5 m-1">
+                        <Card onClick={() => this.props.action(this.props.dish)}>
+                                <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name}/>
+                                <CardImgOverlay>
+                                    <CardTitle>{this.props.dish.name}</CardTitle>
+                                </CardImgOverlay>
+                        </Card>
+
+                    </div>
+                );
+    }
+    
+    renderComments() {
+        const dishComments= {
+            
+        }
+    }
+    
+    
+    renderDetail() {
+            return (
+                    <div key={this.props.dish.id} className="col-12 col-md-5 m-1">
+                        <Card>
                             <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name}/>
-                            <CardImgOverlay>
+                            <CardBody>
                                 <CardTitle>{this.props.dish.name}</CardTitle>
-                            </CardImgOverlay>
-                            <CardBody width="50%">
-                                <p>{this.props.dish.description}</p>
+                                <CardText>{this.props.dish.description}</CardText>
                             </CardBody>
-                    </Card>
-                    
-                </div>
-            );
+                        </Card>
+                    </div>
+                );
+        }
+        
+    
+    
+    render() {
+        if (this.props.detail == null) {
+            console.info('no details. displaying default...')
+            return this.renderStandard();
+        } else {
+            return this.renderDetail();
+        }
     }
 }
 
