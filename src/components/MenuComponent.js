@@ -15,7 +15,6 @@ class Menu extends Component {
     }
     
     onDishSelect(dish) {
-        console.log('MenuComponent.OnDishSelect was triggered for:' + dish.name);
         this.setState({
             selectedDish:dish
         });
@@ -24,18 +23,11 @@ class Menu extends Component {
     
     renderDish(dish) {
             if(dish != null) {
-                return(
-                    <div key={dish.id} className="col-12 col-md-5 m-1">
-                        <Card>
-                            <CardImg width="50%" src={dish.image} alt={dish.name}/>
-                            <CardBody>
-                                <CardTitle>{dish.name}</CardTitle>
-                                <CardText>{dish.description}</CardText>
-                            </CardBody>
-                        </Card>
-                    </div>
-                        
-                );
+                return (
+                    <DishDetail dish={dish} detail="true"/>
+                    
+                    );
+                
             } else {
                 return (
                     <div></div>
@@ -58,9 +50,7 @@ class Menu extends Component {
                 <div className="row">
                         {menu}
                 </div>
-                <div className="row">
-                    {this.renderDish(this.state.selectedDish)}
-                </div>
+                {this.renderDish(this.state.selectedDish)}
             </div>
         );
     }
