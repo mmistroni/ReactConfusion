@@ -25,8 +25,7 @@ class Menu extends Component {
             if(dish != null) {
                 return (
                     <DishDetail dish={dish} detail="true"/>
-                    
-                    );
+                );
                 
             } else {
                 return (
@@ -50,9 +49,8 @@ class Menu extends Component {
                 <div className="row">
                         {menu}
                 </div>
-                <div id="dishContainer" className="row">
-                    {this.renderDish(this.state.selectedDish)}
-                </div>
+                {this.renderDish(this.state.selectedDish)}
+                
             </div>
         );
     }
