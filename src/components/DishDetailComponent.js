@@ -22,7 +22,7 @@ class DishDetail extends Component {
     }
     
     renderComments() {
-        return this.props.dish.comments.map((comment) => {
+        const comments = this.props.dish.comments.map((comment) => {
                 return (
                     <div className="row">
                         <p>-- {comment.comment}</p>
@@ -31,30 +31,40 @@ class DishDetail extends Component {
                 );
             
          });
+        return (
+            <div key="comments" className="col-12 col-md-5 m-1">
+                <Card>
+                    <CardBody>
+                        <CardTitle>Comments</CardTitle>
+                        <CardText>{comments}</CardText>
+                    </CardBody>
+                </Card>
+            </div>
+                
+        );
+    }
+
+    renderDishDetails() {
+        return (
+            <div key="details" className="col-12 col-md-5 m-1"> 
+                <Card>
+                    <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name}/>
+                    <CardBody>
+                        <CardTitle>{this.props.dish.name}</CardTitle>
+                        <CardText>{this.props.dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            </div>
+        );
     }
     
     
     renderDetail() {
             return (
-                    <div id="dishContainer" className="row">
-                        <div key={this.props.dish.id} className="col-12 col-md-5 m-1">
-                            <Card>
-                                <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name}/>
-                                <CardBody>
-                                    <CardTitle>{this.props.dish.name}</CardTitle>
-                                    <CardText>{this.props.dish.description}</CardText>
-                                </CardBody>
-                            </Card>
-                        </div>
-                        <div key="comments" className="col-12 col-md-5 m-1">
-                            <Card>
-                                <CardBody>
-                                    <CardTitle>Comments</CardTitle>
-                                    <CardText>{this.renderComments()}</CardText>
-                                </CardBody>
-                            </Card>    
-                        </div>
-                    </div>
+                    [   
+                        this.renderDishDetails(),this.renderComments()
+                    ]
+                    
                 );
         }
         
