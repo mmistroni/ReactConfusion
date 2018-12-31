@@ -22,7 +22,7 @@ class DishDetail extends Component {
     }
     
     renderComments() {
-        const dishComments= this.props.dish.comments.map((comment) => {
+        return this.props.dish.comments.map((comment) => {
                 return (
                     <div className="row">
                         <p>-- {comment.comment}</p>
@@ -50,7 +50,7 @@ class DishDetail extends Component {
                             <Card>
                                 <CardBody>
                                     <CardTitle>Comments</CardTitle>
-                                    <CardText>{this.props.dish.price}</CardText>
+                                    <CardText>{this.renderComments()}</CardText>
                                 </CardBody>
                             </Card>    
                         </div>
