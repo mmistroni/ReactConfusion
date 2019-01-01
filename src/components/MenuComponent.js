@@ -10,8 +10,6 @@ class Menu extends Component {
         this.state = {
             selectedDish : null
         }
-        this.onDishSelect = this.onDishSelect.bind(this);
-        
     }
     
     onDishSelect(dish) {
@@ -40,7 +38,7 @@ class Menu extends Component {
         
         const menu = this.props.dishes.map((dish) => {
             return (
-                <DishDetail dish={dish} action={this.onDishSelect}/>
+                <DishDetail dish={dish} action={this.onDishSelect.bind(this)}/>
             );
         });
         
