@@ -2,13 +2,9 @@ import React, {Component} from 'react';
 import {Media} from'reactstrap';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap'
 
-class DishComments extends Component {
-    constructor(props) {
-        super(props);
-    }
+    function DishComments(props) {
     
-    render() {
-        const comments = this.props.dish.comments.map((comment) => {
+        const comments = props.dish.comments.map((comment) => {
                 return (
                     <div className="row">
                         <p>-- {comment.comment}</p>
@@ -27,7 +23,7 @@ class DishComments extends Component {
                 
         );
     }
-}
+
 
 
 export default DishComments;
