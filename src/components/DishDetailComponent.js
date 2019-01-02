@@ -41,10 +41,15 @@ class DishDetail extends Component {
     
     
     render() {
-        if (this.props.detail == null) {
-            return this.renderStandard();
+        if (this.props.dish != null) {
+
+            if (this.props.detail == null) {
+                return this.renderStandard();
+            } else {
+                return this.renderDishDetails();
+            }
         } else {
-            return this.renderDishDetails();
+            return ("<div></div>")
         }
     }
 }
