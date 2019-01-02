@@ -8,6 +8,7 @@ class DishDetail extends Component {
     }
     
     renderDishDetails() {
+        
         return (
                 <div className="container">
                     <div className="row">
