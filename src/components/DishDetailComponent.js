@@ -7,49 +7,40 @@ class DishDetail extends Component {
         super(props);
     }
     
-    renderStandard() {
-            return (
-                    <div key={this.props.dish.id} className="col-12 col-md-5 m-1">
-                        <Card onClick={() => this.props.action(this.props.dish)}>
-                                <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name}/>
-                                <CardImgOverlay>
-                                    <CardTitle>{this.props.dish.name}</CardTitle>
-                                </CardImgOverlay>
-                        </Card>
-                    </div>
-                );
-    }
-    
     renderDishDetails() {
         return (
-            <div id="dishContainer" className="row">
-                <div key="details" className="col-12 col-md-5 m-1"> 
-                    <Card>
-                        <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name}/>
-                        <CardBody>
-                            <CardTitle>{this.props.dish.name}</CardTitle>
-                            <CardText>{this.props.dish.description}</CardText>
-                        </CardBody>
-                    </Card>
+                <div className="container">
+                    <div className="row">
+                        <div key="details" className="col-12 col-md-5 m-1"> 
+                            <Card>
+                                <CardImg width="50%" src={this.props.dish.image} alt={this.props.dish.name}/>
+                                <CardBody>
+                                    <CardTitle>{this.props.dish.name}</CardTitle>
+                                    <CardText>{this.props.dish.description}</CardText>
+                                </CardBody>
+                            </Card>
+                        </div>
+                        <div key="comments" className="col-12 col-md-5 m-1"> 
+                            <DishComments dish={this.props.dish}/>
+                        </div>
+                    </div>
                 </div>
-                <div key="comments" className="col-12 col-md-5 m-1"> 
-                    <DishComments dish={this.props.dish}/>
-                </div>
-            </div>
         );
     }
     
-    
+    renderEmpty() {
+        return (
+            <div></div>
+        );
+    }
+
+
     render() {
         if (this.props.dish != null) {
-
-            if (this.props.detail == null) {
-                return this.renderStandard();
-            } else {
-                return this.renderDishDetails();
-            }
+            return this.renderDishDetails();
+            
         } else {
-            return ("<div></div>")
+            return this.renderEmpty();
         }
     }
 }
