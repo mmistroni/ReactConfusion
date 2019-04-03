@@ -4,7 +4,7 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reac
 
     function DishComments(props) {
     
-        const comments = props.dish.comments.map((comment) => {
+        const comments = props.comments.map((comment) => {
                 return (
                     <div className="row">
                         <p>-- {comment.comment}</p>

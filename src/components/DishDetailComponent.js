@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import DishComments from './DishCommentsComponent';
     
 
+
+
+
     function RenderDish({dish}) {
         return (
             <div key="details" className="col-12 col-md-5 m-1"> 
@@ -20,10 +23,10 @@ import DishComments from './DishCommentsComponent';
         );
     }
 
-    function RenderComments({dish}) {
+    function RenderComments({comments}) {
         return(
             <div key="comments" className="col-12 col-md-5 m-1"> 
-                <DishComments dish={dish}/>
+                <DishComments comments={comments}/>
             </div>
         );
     }
@@ -49,7 +52,7 @@ import DishComments from './DishCommentsComponent';
                                 <RenderDish dish={props.dish}/>
                             </div>
                             <div className="col-12 col-md-5 m-1">
-                                <RenderComments dish={props.dish}/>
+                                <RenderComments comments={props.comments}/>
                             </div>
                         </div>
                 </div>
