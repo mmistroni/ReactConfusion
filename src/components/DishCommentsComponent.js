@@ -1,6 +1,27 @@
 import React, {Component} from 'react';
 import {Media} from'reactstrap';
-import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap'
+import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem,
+            Button, Row, Col, Label } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import {Control, LocalForm, Errors} from 'react-redux-form';
+
+
+    function RenderCommentForm() {
+        return (
+            <LocalForm >
+                <Row className="form-group">
+                    <Col md={{size:10, offset: 2}}>
+                        <Button type="submit" color="primary">
+                            Send Feedback
+                        </Button>
+                    </Col>
+                </Row>
+            </LocalForm>
+        
+        );
+    }
+
 
     function DishComments(props) {
     
@@ -17,7 +38,7 @@ import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reac
                 <Card>
                     <CardBody>
                         <CardTitle>Comments</CardTitle>
-                        <CardText>{comments}</CardText>
+                        <CardText>{comments}<br/><RenderCommentForm/></CardText>
                     </CardBody>
                 </Card>
                 

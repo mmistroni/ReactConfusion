@@ -4,7 +4,6 @@ import { Card, CardImg, CardText, CardBody,
     CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import DishComments from './DishCommentsComponent';
-    
 
 
 
@@ -22,6 +21,9 @@ import DishComments from './DishCommentsComponent';
         </div>
         );
     }
+
+
+    
 
     function RenderComments({comments}) {
         return(
