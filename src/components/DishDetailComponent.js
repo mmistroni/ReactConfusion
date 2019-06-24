@@ -9,6 +9,7 @@ import DishComments from './DishCommentsComponent';
 
 
     function RenderDish({dish}) {
+        console.log("Rendering dish//..");
         return (
             <div key="details" className="col-12 col-md-5 m-1"> 
             <Card>
@@ -26,6 +27,7 @@ import DishComments from './DishCommentsComponent';
     
 
     function RenderComments({comments}) {
+        
         return(
             <div key="comments" className="col-12 col-md-5 m-1"> 
                 <DishComments comments={comments}/>
