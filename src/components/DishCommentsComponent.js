@@ -6,15 +6,57 @@ import { Breadcrumb, BreadcrumbItem,
 import { Link } from 'react-router-dom';
 import {Control, LocalForm, Errors} from 'react-redux-form';
 import Popup from './Popup';
+import Modal from 'react-awesome-modal';
 // Refactor this into a component as we need to set the state for the react popup
 
-class Modal extends React.Component {
-  render() {
-      if(!this.props.show){
-          return null;
-      }
-        return <div>Hello Modal</div>;
-  }
+class MyModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible : false
+        }
+    }
+
+    openModal() {
+        this.setState({
+            visible : true
+        });
+    }
+
+    closeModal() {
+        this.setState({
+            visible : false
+        });
+    }
+    
+    
+    
+    render() {
+        return (
+            <section>
+            <input type="button" value="Add Comment" onClick={() => this.openModal()} />
+                  
+            <Modal visible={this.state.visible} width="400" height="300" effect="fadeInUp" onClickAway={() => this.closeModal()}>
+                    <div>
+                        <h1>Enter Your Comment</h1>
+                        <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                            <Row className="form-group">
+                                <Label  htmlFor="firstname" md={2}>First Name</Label>
+                                <Col md={10}>
+                                    <Control.text model=".firstname" id="firstname" name="firstname"
+                                        placeholder="First Name"
+                                        className="form-control"
+                                        />
+                                </Col>
+                            </Row>
+                        </LocalForm>
+                        <p>Some Contents</p>
+                        <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
+                    </div>
+                </Modal>
+            </section>
+        );
+    }
 }
 
 
@@ -26,33 +68,12 @@ class RenderCommentForm extends Component {
         };
     }
     
-    showModal() {
-        console.info('Showimg Modal...' + this.state.show)
-
-        this.setState({
-          show: true
-        });
-    }
     
-    handleSubmit(values) {
-        alert("Current State is: " + JSON.stringify(this.state));
-        console.log("Submitting. we should opena popup..");
-        this.showModal();
-    }
     
     
     render() {
         return (
-            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-                <Row className="form-group">
-                    <Col md={{size:10, offset: 2}}>
-                        <Button type="submit" color="primary">
-                            Send Feedbackss
-                        </Button>
-                        <Modal show={this.state.show}/>
-                    </Col>
-                </Row>
-            </LocalForm>
+            <MyModal/>
             
         
         );
