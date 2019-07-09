@@ -11,7 +11,7 @@ import DishComments from './DishCommentsComponent';
     function RenderDish({dish}) {
         console.log("Rendering dish//..");
         return (
-            <div key="details" className="col-12 col-md-5 m-1"> 
+            <div key="details" className="col-6 col-md-5 m-1"> 
             <Card>
                 <CardImg width="50%" src={dish.image} alt={dish.name}/>
                 <CardBody>
@@ -29,7 +29,7 @@ import DishComments from './DishCommentsComponent';
     function RenderComments({comments}) {
         
         return(
-            <div key="comments" className="col-12 col-md-5 m-1"> 
+            <div key="comments" className="col-6 col-md-5 m-1"> 
                 <DishComments comments={comments}/>
             </div>
         );
@@ -52,12 +52,9 @@ import DishComments from './DishCommentsComponent';
                             </div>                
                         </div>
                         <div className="row">
-                            <div className="col-12 col-md-5 m-1">
-                                <RenderDish dish={props.dish}/>
-                            </div>
-                            <div className="col-12 col-md-5 m-1">
-                                <RenderComments comments={props.comments}/>
-                            </div>
+                            <RenderDish dish={props.dish}/>
+                            <RenderComments comments={props.comments}/>
+                            
                         </div>
                 </div>
             );
