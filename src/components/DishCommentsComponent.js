@@ -42,25 +42,42 @@ class MyModal extends React.Component {
             <section>
             <input type="button" value="Add Comment" onClick={() => this.openModal()} />
             
-
-            <Modal visible={this.state.visible} width="300" height="300" effect="fadeInUp" onClickAway={() => this.closeModal()}>
-                    <div style={{ width:300, height: 300, justifyContent:'center' }}>
+            <Modal visible={this.state.visible}  effect="fadeInUp" onClickAway={() => this.closeModal()}>
+                    <div style={{ width:300, height: 350, justifyContent:'center' }}>
                         
  
             
                         <h4 align="center">Enter Your Comment</h4>
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
-                                <Col md={10}>
-                                    <Control.text model=".name" id="name" name="name"
-                                        placeholder="Name"
+                                <Col md={{size:10, offset:1}}>
+                                    <Control.text model=".author" id="author" name="author"
+                                        placeholder="Author"
                                         className="form-control"
                                         />
                                 </Col>
                             </Row>
+                            <Row className="form-group"> 
+                                <Col md={{size:4, offset:1}}>
+                                    <div className="form-check">
+                                        <Label check>
+                                            Rating
+                                        </Label>
+                                    </div>
+                                </Col> 
+                                <Col md={{size:6}}>
+                                    <Control.select model=".rating" name="rating"
+                                        className="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option> 
+                                    </Control.select>
+                                </Col>
+                            </Row>
                             <Row className="form-group">
                             
-                                <Col md={10} align="center">
+                                <Col md={{size:10, offset:1}} align="center">
                                     <Control.textarea model=".comment" id="comment" name="comment"
                                         rows="5"
                                         className="form-control"
