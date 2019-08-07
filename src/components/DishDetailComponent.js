@@ -9,7 +9,6 @@ import DishComments from './DishCommentsComponent';
 
 
     function RenderDish({dish}) {
-        console.log("Rendering dish//..");
         return (
             <div key="details" className="col-6 col-md-5 m-1"> 
             <Card>
@@ -26,7 +25,7 @@ import DishComments from './DishCommentsComponent';
 
     
 
-    function RenderComments({comments}) {
+    function RenderComments({comments}, {dishid}) {
         
         return(
             <div key="comments" className="col-6 col-md-5 m-1"> 
@@ -47,7 +46,7 @@ import DishComments from './DishCommentsComponent';
                                 <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
                             </Breadcrumb>
                             <div className="col-12">
-                                <h3>{props.dish.name}</h3>
+                                <h3>{props.dish.name} @ {props.dish.id}</h3>
                                 <hr />
                             </div>                
                         </div>
