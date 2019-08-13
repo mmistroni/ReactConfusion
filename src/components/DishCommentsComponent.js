@@ -13,7 +13,7 @@ import MyModal from './ModalComponent';
                 
                 return (
                     <div className="row">
-                        <p>{comment.comment} for dish:{comment.dishId}</p>
+                        <p>{comment.comment} for dish:{props.dishId}</p>
                         <p> {comment.author}  {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} </p>
                     </div>
                 );
@@ -22,8 +22,9 @@ import MyModal from './ModalComponent';
         return (
                 <Card>
                     <CardBody>
-                        <CardTitle>Comments For {props.comments[0].dishId}</CardTitle>
-                        <CardText>{comments}<br/><MyModal dishId={props.comments[0].dishId}/></CardText>
+                        <CardTitle>Comments For {props.dishId}</CardTitle>
+                        <CardText>{comments}<br/><MyModal dishId={props.dishId}
+                                                          addComment={props.addComment}/></CardText>
                         
                     </CardBody>
                 </Card>

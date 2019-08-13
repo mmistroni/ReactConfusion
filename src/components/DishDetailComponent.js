@@ -25,11 +25,13 @@ import DishComments from './DishCommentsComponent';
 
     
 
-    function RenderComments({comments}, {dishid}) {
+    function RenderComments({comments, addComment, dishId}) {
         
         return(
             <div key="comments" className="col-6 col-md-5 m-1"> 
-                <DishComments comments={comments}/>
+                <DishComments comments={comments}
+                              addComment={addComment}
+                              dishId={dishId}/>
             </div>
         );
     }
@@ -52,7 +54,9 @@ import DishComments from './DishCommentsComponent';
                         </div>
                         <div className="row">
                             <RenderDish dish={props.dish}/>
-                            <RenderComments comments={props.comments}/>
+                            <RenderComments comments={props.comments}
+                                    addComment={props.addComment}
+                                    dishId={props.dish.id}/>
                             
                         </div>
                 </div>

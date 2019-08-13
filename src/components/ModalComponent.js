@@ -15,8 +15,8 @@ class MyModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible : false,
-            dishId: props.dishId
+            visible : false
+            
         }
     }
 
@@ -33,15 +33,11 @@ class MyModal extends React.Component {
     }
     
     handleSubmit(values) {
-        var copy_dict = {}    
-        for(var key in values)
-        {
-            copy_dict[key] = values[key];
-        }
-        
-        copy_dict['dishId'] = this.state.dishId;
-        alert("Copy: " + JSON.stringify(copy_dict));
-        
+        alert('DishId:' + this.props.dishId);
+        this.props.addComment(this.props.dishId,
+                             values.rating,
+                             values.author,
+                             values.comment);
         this.closeModal();
     }
     
